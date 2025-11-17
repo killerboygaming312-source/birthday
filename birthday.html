@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Users/Admin/Documents/html2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>For Golden Eye — Happy Birthday</title>
+<style>
+  :root{
+    --bg:#000;
+    --card:#0b1220;
+    --accent:#16a34a;
+    --muted:#9aa6b2;
+    --glass: rgba(255,255,255,0.03);
+  }
+  html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:#eef2f7;}
+  .wrap{max-width:760px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
+  header{padding:14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.03)}
+  header h1{font-size:18px;margin:0}
+  header h6{margin:0;font-size:12px;color:var(--muted)}
+  main{flex:1;padding:16px;box-sizing:border-box}
+  .page{display:none;gap:14px}
+  .page.active{display:flex;flex-direction:column;align-items:stretch;animation:fadeIn .35s ease}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:14px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+  .title{font-size:20px;margin:0 0 8px 0}
+  .text{color:var(--muted);line-height:1.45}
+  .big{font-size:28px}
+  .nav{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:12px}
+  .btn{background:var(--accent);border:0;color:#001217;padding:10px 14px;border-radius:12px;font-weight:700}
+  .btn.secondary{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+  .small{font-size:13px;color:var(--muted)}
+  /* Bubble area */
+  #bubble-area{height:320px;background:#071017;border-radius:10px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.02)}
+  .bubble{position:absolute;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#022;}
+  .bubble.pop-anim{animation:pop .25s ease forwards}
+  @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.5);opacity:.9}100%{transform:scale(0);opacity:0}}
+  /* tiles */
+  #tiles{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px}
+  .tile{width:78px;height:78px;border-radius:10px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;font-size:28px;user-select:none;touch-action:manipulation;transition:transform .18s ease, box-shadow .2s ease}
+  .tile.revealed{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,255,200,0.06);background:linear-gradient(180deg, rgba(0,255,200,0.04), rgba(0,255,200,0.02));color:#00ffd7}
+  .tile.matched{animation:pop .35s ease}
+  /* candy board */
+  #candy-board{display:flex;gap:12px;justify-content:center;margin-top:12px}
+  .candy{width:60px;height:60px;border-radius:8px;background:#222;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .18s}
+  .candy.correct{background:linear-gradient(90deg,#16a34a,#34d399);box-shadow:0 10px 30px rgba(20,200,120,0.12);transform:scale(1.06)}
+  /* memory flash */
+  #flashBtn{padding:18px 36px;border-radius:12px;font-size:18px;background:#111;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+  /* reaction */
+  #reactBtn{padding:18px 24px;border-radius:12px;font-size:18px;background:#222;border:1px solid rgba(255,255,255,0.04)}
+  .fadeIn{animation:fadeIn .45s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  /* responsive */
+  @media (max-width:420px){ .card{padding:12px;border-radius:10px} header h1{font-size:16px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>For Golden Eye</h1>
+      <h6>— someone who cares</h6>
+    </div>
+    <div class="small">Sent with a little mischief ✨</div>
+  </header>
+
+  <main>
+    <!-- PAGE 1: Cover -->
+    <section id="page1" class="page active">
+      <div class="card">
+        <p class="title">Happy Birthday, Golden Eye 🎉</p>
+        <p class="text">A tiny surprise awaits — tap Start and enjoy. No spoilers here, just smiles.</p>
+        <p class="big">🎂✨</p>
+      </div>
+    </section>
+
+    <!-- PAGE 2: Sweet lines (no spoilers) -->
+    <section id="page2" class="page">
+      <div class="card">
+        <p class="title">A little note before we play</p>
+        <p class="text">You are bright, kind, and stronger than you think. Today is for your smiles — take this little game journey and have fun. 💫</p>
+      </div>
+    </section>
+
+    <!-- PAGE 3: Bubble Popper -->
+    <section id="page3" class="page">
+      <div class="card">
+        <p class="title">Game 1 — Bubble Popper</p>
+        <p class="text">Pop 10 bubbles. Tap gently — it's touch-friendly.</p>
+        
+        <div id="bubble-area" aria-hidden="false"><div class="bubble" style="left: 65.7164%; top: -6.4%; background: rgba(232, 209, 255, 0.95);"></div><div class="bubble" style="left: 26.716%; top: 7.4%; background: rgba(234, 196, 255, 0.95);"></div><div class="bubble" style="left: 71.2571%; top: 21.8%; background: rgba(235, 187, 255, 0.95);"></div><div class="bubble" style="left: 89.5318%; top: 35.6%; background: rgba(172, 200, 255, 0.95);"></div><div class="bubble" style="left: 84.9999%; top: 49.4%; background: rgba(248, 187, 255, 0.95);"></div><div class="bubble" style="left: 34.438%; top: 63.8%; background: rgba(159, 235, 255, 0.95);"></div><div class="bubble" style="left: 59.4824%; top: 77.6%; background: rgba(202, 226, 255, 0.95);"></div></div><p id="bubble-text" class="small">Popped: 0 / 10</p>
+      </div>
+    </section>
+
+    <!-- PAGE 4: Win appreciation -->
+    <section id="page4" class="page">
+      <div class="card">
+        <p class="title">Nice one, Golden Eye 🎉</p>
+        <p class="text">That was smooth — you popped them like a pro. You deserve a cake for that. 🍰</p>
+      </div>
+    </section>
+
+    <!-- PAGE 5: Tile Match -->
+    <section id="page5" class="page">
+      <div class="card">
+        <p class="title">Game 2 — Tile Match</p>
+        <p class="text">Find 3 matching pairs. Easy and fun.</p>
+        <div id="tiles" role="list"><button class="tile" data-val="🍒"></button><button class="tile" data-val="🍋"></button><button class="tile" data-val="🍋"></button><button class="tile" data-val="⭐"></button><button class="tile" data-val="🍒"></button><button class="tile" data-val="⭐"></button></div>
+        <p id="tiles-text" class="small">Found pairs: 0 / 3</p>
+      </div>
+    </section>
+
+    <!-- PAGE 6: Win appreciation -->
+    <section id="page6" class="page">
+      <div class="card">
+        <p class="title">Amazing! ✨</p>
+        <p class="text">You matched them all — that was lovely. You're doing great.</p>
+      </div>
+    </section>
+
+    <!-- PAGE 7: Candy Click (easy) -->
+    <section id="page7" class="page">
+      <div class="card">
+        <p class="title">Game 3 — Candy Click</p>
+        <p class="text">Tap the green candy. It's easy — only one is green.</p>
+        <div id="candy-board" aria-hidden="false"><button class="candy">🍬</button><button class="candy">🍬</button><button class="candy">🍬</button><button class="candy">🍬</button><button class="candy">🍬</button></div>
+        <p id="candy-text" class="small">Tap the green candy</p>
+      </div>
+    </section>
+
+    <!-- PAGE 8: Memory Tap (flash then tap) -->
+    <section id="page8" class="page">
+      <div class="card">
+        <p class="title">Game 4 — Memory Tap</p>
+        <p class="text">Watch the flash, then tap the button when it flashes again.</p>
+        <div style="display:flex;gap:12px;justify-content:center;align-items:center;margin-top:10px">
+          <button id="flashBtn" style="background: rgb(0, 255, 215); color: rgb(0, 0, 17);">Tap</button>
+        </div>
+        <p id="memory-text" class="small">Tap now!</p>
+      </div>
+    </section>
+
+    <!-- PAGE 9: Your paragraph (2nd-last) -->
+    <section id="page9" class="page" style="text-align:left">
+      <div class="card">
+        <p class="title">A message for you</p>
+        <p class="text" style="white-space:pre-wrap;font-size:15px;line-height:1.5">
+"yoo its your birthday so.... happyyyyyyyyyyyyyyyyyyyyy birthdayyyyyyyyyyyyyyyy i know iam sending it to you too lately and i have been plaing it from 3 months and in these 3 days before the birthday i started writing the codes and using my knowledge and some help of gpt. i cant sleep because i planed that first i will master the html then create a program like this but because a lot of things happened with me and i started staying furstrated and sad leaving intrest from everything and then suddenly taking intrest in study coz i have nothing to do but at the end i am creating this program.i just forgot that i have to create a program for the birthday i was thinking of making this for anyone else but that anyone doesnt exist anymore  so im making this for you  so im typing it since 3 days and i also code at night so that i can complete the work on time . thats whatever doesnt matter at all if you remember once i said that i just want to stay alone when we started talking in whatsapp and also said that if i want to get in that state where i was in 1st year when i loose intrest fromm every thing and just live like a stone nothing to do with anyone and just come to clg coaching study there gain knowledge and just come back to home thats the best life but i cant enter that state because that requires a trauma that broke me from inside and start eating my mind my soul and at the end my heart and the feelings the emotions it holds and be the heart less and emotionless like before and what a coincidence the girl whom i said this is the reason of that trauma thanks a lot for the help there was a time when i started noticing you when you started talking with me i never occurered to see you like a lover i always see you as a friend who just talk with me every single day and those 5 months are like most happiest days of my life idk why but with no intrest when ever i say you or when i get your smell or when ever i hear your voice i feel relifed idk why just a person whom i dont have any intrest just make me happy by her appearance hush................ pathetic but anyways sorry................. i know you cant see the screen that much time but still i m not but still forcing you to read it im really really sorry and at the end i can say is happy birthday stay happy always take care of your brother,your parents and never let their heads down and always let them proud on you and i never asked for something but i will pray to god that your brother will be fine quickly and after you left you home he will take care of your parents well and if in future i meet him then say him that i will play a custom with him.after all the name golden eye is not just a name its a charm of someones happiness but some times someone's charm starts loosing its power and after all we cant stop changes we just have to addapt the changes huh..............sorry for wasting your time on a dumb driven cattle take care of your brother,your friend ,your kids(pondu ,misty,bottle,bag etc..)and the name golden eye will be removed from my brain coz i cant stop thinking and i think after 1 year i forgot everything which is so devastating for me but as i said u cant stop changes you just have to adapt and yeah thats it i have nothing more to say so give me permisson to rest in peace and till then goodbye golden eye my charm"
+        </p>
+      </div>
+    </section>
+
+    <!-- PAGE 10: Final -->
+    <section id="page10" class="page">
+      <div class="card">
+        <p class="title">The journey ends...</p>
+        <p class="text">give me permissin to leave thank you..........</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav">
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="prevBtn" class="btn secondary">Back</button>
+      <button id="nextBtn" class="btn">Next</button>
+    </div>
+    <div class="small" id="pageIndicator">1 / 10</div>
+  </div>
+</div>
+
+<script>
+/* --- Page navigation --- */
+const TOTAL = 10;
+let current = 1;
+const show = n => {
+  if (n<1) n=1; if (n> TOTAL) n=TOTAL;
+  current = n;
+  for (let i=1;i<=TOTAL;i++){
+    document.getElementById('page'+i).classList.toggle('active', i===n);
+  }
+  document.getElementById('pageIndicator').textContent = `${n} / ${TOTAL}`;
+  // auto-start games when arriving
+  if (n===3) startBubblePopper();
+  if (n===5) startTileMatch();
+  if (n===7) startCandy();
+  if (n===8) startMemory();
+}
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  // prevent skipping while a game locks progress? we allow free navigation but games give appreciation on win
+  if (current < TOTAL) show(current+1);
+});
+document.getElementById('prevBtn').addEventListener('click', ()=> show(current-1));
+
+/* initialize page elements ids mapping for fast selection */
+for(let i=1;i<=TOTAL;i++){
+  const el = document.getElementById('page'+i) || document.getElementById('page'+i) ;
+}
+
+/* Helper: get page by number (different id naming above) */
+function getPageEl(n){ return document.querySelector(`#page${n}`) || document.getElementById('page'+n); }
+
+/* ------------------ Game 1: Bubble Popper ------------------ */
+let popped = 0;
+let bubbleInterval = null;
+function randColor(){ const r=140+Math.floor(Math.random()*115); const g=180+Math.floor(Math.random()*60); return `rgba(${r},${g},255,0.95)`; }
+function startBubblePopper(){
+  popped = 0;
+  const area = document.getElementById('bubble-area');
+  area.innerHTML='';
+  document.getElementById('bubble-text').textContent = `Popped: 0 / 10`;
+  // spawn periodically
+  clearInterval(bubbleInterval);
+  bubbleInterval = setInterval(()=>{
+    if (popped >= 10) { clearInterval(bubbleInterval); return; }
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.style.left = (6 + Math.random()*84) + '%';
+    b.style.top = (86 + Math.random()*10) + '%'; // start near bottom
+    b.style.background = randColor();
+    area.appendChild(b);
+    // animate rise using JS (safer for mobile)
+    let dy = 0; // frame counter
+    const rise = setInterval(()=>{
+      dy += 1;
+      b.style.top = (86 - dy*0.6) + '%';
+      if (parseFloat(b.style.top) < -10){ clearInterval(rise); if (b.parentNode) b.remove(); }
+    }, 30);
+    b.addEventListener('touchstart', popBubble, {passive:true});
+    b.addEventListener('click', popBubble);
+    function popBubble(e){
+      e.stopPropagation();
+      // pop animation
+      b.classList.add('pop-anim');
+      setTimeout(()=>{ if(b.parentNode) b.remove(); },250);
+      popped++;
+      document.getElementById('bubble-text').textContent = `Popped: ${popped} / 10`;
+      if (popped >= 10){
+        // appreciation
+        clearInterval(bubbleInterval);
+        setTimeout(()=> {
+          alert('You popped them all! Amazing, Golden Eye — well done! 🎉');
+          // automatically advance to appreciation page
+          show(4);
+        }, 220);
+      }
+    }
+  }, 700);
+}
+
+/* ------------------ Game 2: Tile Match ------------------ */
+let tileState = { first: null, locked: false, matched:0 };
+function startTileMatch(){
+  tileState.first = null; tileState.locked=false; tileState.matched=0;
+  document.getElementById('tiles-text').textContent = 'Found pairs: 0 / 3';
+  const container = document.getElementById('tiles'); container.innerHTML = '';
+  const values = ['🍒','🍋','⭐']; // three values
+  const pool = values.concat(values); shuffle(pool);
+  pool.forEach((v,i)=>{
+    const t = document.createElement('button');
+    t.className = 'tile';
+    t.dataset.val = v;
+    t.innerText = ''; // hidden
+    t.addEventListener('click', ()=> tileClick(t));
+    container.appendChild(t);
+  });
+}
+function tileClick(t){
+  if (tileState.locked) return;
+  if (t.classList.contains('revealed') || t.classList.contains('matched')) return;
+  revealTile(t);
+  if (!tileState.first){ tileState.first = t; return; }
+  const second = t;
+  if (tileState.first === second) return;
+  if (tileState.first.dataset.val === second.dataset.val){
+    // matched
+    tileState.first.classList.add('matched');
+    second.classList.add('matched');
+    tileState.matched++;
+    document.getElementById('tiles-text').textContent = `Found pairs: ${tileState.matched} / 3`;
+    // tiny celebration
+    setTimeout(()=> {
+      tileState.first.classList.remove('revealed');
+      second.classList.remove('revealed');
+      tileState.first.classList.add('matched');
+      second.classList.add('matched');
+    }, 150);
+    tileState.first = null;
+    if (tileState.matched >= 3){
+      setTimeout(()=> {
+        alert('Brilliant! You matched all pairs — lovely work! 🌟');
+        show(6); // go to appreciation page for tiles
+      }, 300);
+    }
+  } else {
+    tileState.locked = true;
+    setTimeout(()=> {
+      hideTile(tileState.first);
+      hideTile(second);
+      tileState.first = null;
+      tileState.locked = false;
+    }, 600);
+  }
+}
+function revealTile(t){ t.classList.add('revealed'); t.innerText = t.dataset.val; }
+function hideTile(t){ t.classList.remove('revealed'); t.innerText = ''; }
+function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }}
+
+/* ------------------ Game 3: Candy Click (very easy) ------------------ */
+let candyDone = false;
+function startCandy(){
+  candyDone = false;
+  const board = document.getElementById('candy-board');
+  board.innerHTML = '';
+  document.getElementById('candy-text').textContent = 'Tap the green candy';
+  // create 5 candies, one of them green
+  const correctIndex = Math.floor(Math.random()*5);
+  for(let i=0;i<5;i++){
+    const c = document.createElement('button');
+    c.className = 'candy';
+    c.innerText = '🍬';
+    c.addEventListener('click', ()=> {
+      if (candyDone) return;
+      if (i===correctIndex){
+        c.classList.add('correct');
+        candyDone = true;
+        document.getElementById('candy-text').textContent = 'You found it! Great job 😄';
+        setTimeout(()=> { alert('Nice pick! You got it — sweet victory! 🍬'); show(8); }, 400);
+      } else {
+        // small feedback
+        c.style.transform = 'scale(.88)';
+        setTimeout(()=> c.style.transform='scale(1)',200);
+      }
+    });
+    board.appendChild(c);
+  }
+}
+
+/* ------------------ Game 4: Memory Tap (easy) ------------------ */
+let memoryFlashed = false;
+function startMemory(){
+  memoryFlashed = false;
+  document.getElementById('memory-text').textContent = 'Watch the flash...';
+  const btn = document.getElementById('flashBtn');
+  btn.style.background = '#111'; btn.style.color = 'var(--muted)';
+  // flash once after short delay
+  setTimeout(()=> {
+    btn.style.background = '#00ffd7'; btn.style.color = '#001';
+    setTimeout(()=> {
+      btn.style.background = '#111'; btn.style.color = 'var(--muted)';
+      memoryFlashed = true;
+      document.getElementById('memory-text').textContent = 'Now tap when it flashes again.';
+      // second flash prompt after small delay
+      setTimeout(()=> {
+        btn.style.background = '#00ffd7'; btn.style.color = '#001';
+        // allow her to tap quickly
+        setTimeout(()=> {
+          if (memoryFlashed){
+            // still waiting for user to tap - give her a little time
+            document.getElementById('memory-text').textContent = 'Tap now!';
+          }
+        }, 150);
+      }, 700);
+    }, 600);
+  }, 400);
+}
+document.getElementById('flashBtn').addEventListener('click', ()=> {
+  if (memoryFlashed){
+    memoryFlashed = false;
+    document.getElementById('memory-text').textContent = 'Nice! You remembered it — great job!';
+    setTimeout(()=> { alert('Sweet memory! You nailed it. 🌟'); show(9); }, 450);
+  } else {
+    // if tapped too early, gentle hint
+    document.getElementById('memory-text').textContent = 'Wait for the flash... try again!';
+  }
+});
+
+/* ------------------ Reaction mini (bonus auto-easy) ------------------ */
+/* (not necessary — kept simple: after wins, we progress) */
+
+/* --- Start with page 1 visible already --- */
+show(1);
+</script>
+
+
+</body></html>
